@@ -1,0 +1,116 @@
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+// Structure to represent a product
+struct Product {
+int id;
+string name;
+double price;
+double gst;
+};
+
+// Maximum number of products in the list
+const int MAX_PRODUCTS = 100;
+
+// Array to store products
+Product productList[MAX_PRODUCTS];
+
+// Number of products currently in the list
+int productCount = 0;
+
+// Function to insert a product
+void insertProduct() {
+if (productCount &lt; MAX_PRODUCTS) {
+Product newProduct;
+cout &lt;&lt; &quot;Enter product ID: &quot;;
+cin &gt;&gt; newProduct.id;
+
+Exp 4
+
+cout &lt;&lt; &quot;Enter product name: &quot;;
+cin&gt;&gt;newProduct.name;
+
+cout &lt;&lt; &quot;Enter product price: &quot;;
+cin &gt;&gt; newProduct.price;
+
+cout &lt;&lt; &quot;Enter product GST: &quot;;
+cin &gt;&gt; newProduct.gst;
+
+productList[productCount++] = newProduct;
+cout &lt;&lt; &quot;Product inserted successfully.&quot; &lt;&lt; endl;
+} else {
+cout &lt;&lt; &quot;Product list is full.&quot; &lt;&lt; endl;
+}
+}
+
+// Function to delete a product by ID
+void deleteProduct() {
+int id;
+cout &lt;&lt; &quot;Enter the ID of the product you want to delete: &quot;;
+cin &gt;&gt; id;
+
+for (int i = 0; i &lt; productCount; i++) {
+if (productList[i].id == id) {
+for (int j = i; j &lt; productCount - 1; j++) {
+productList[j] = productList[j + 1];
+}
+productCount--;
+cout &lt;&lt; &quot;Product deleted successfully.&quot; &lt;&lt; endl;
+
+Exp 4
+return;
+}
+}
+cout &lt;&lt; &quot;Product with ID &quot; &lt;&lt; id &lt;&lt; &quot; not found.&quot; &lt;&lt; endl;
+}
+
+// Function to traverse and display all products
+void displayProducts() {
+if (productCount == 0) {
+cout &lt;&lt; &quot;No products to display.&quot; &lt;&lt; endl;
+return;
+}
+cout &lt;&lt; &quot;Product ID\tName\tPrice\tGST&quot; &lt;&lt; endl;
+for (int i = 0; i &lt; productCount; i++) {
+cout &lt;&lt; productList[i].id &lt;&lt; &quot;\t\t&quot; &lt;&lt; productList[i].name &lt;&lt; &quot;\t&quot; &lt;&lt; productList[i].price &lt;&lt; &quot;\t&quot; &lt;&lt;
+productList[i].gst &lt;&lt; endl;
+}
+}
+
+int main() {
+char choice;
+
+do {
+cout &lt;&lt; &quot;\nMenu:\n&quot;;
+cout &lt;&lt; &quot;1. Insert Product\n&quot;;
+cout &lt;&lt; &quot;2. Delete Product\n&quot;;
+cout &lt;&lt; &quot;3. Display Products\n&quot;;
+cout &lt;&lt; &quot;4. Exit\n&quot;;
+cout &lt;&lt; &quot;Enter your choice: &quot;;
+cin &gt;&gt; choice;
+
+Exp 4
+switch (choice) {
+case &#39;1&#39;:
+insertProduct();
+break;
+case &#39;2&#39;:
+deleteProduct();
+break;
+case &#39;3&#39;:
+displayProducts();
+break;
+case &#39;4&#39;:
+cout &lt;&lt; &quot;Exiting program.\n&quot;;
+break;
+default:
+cout &lt;&lt; &quot;Invalid choice. Please try again.\n&quot;;
+break;
+}
+
+} while (choice != &#39;4&#39;);
+
+return 0;
+}
