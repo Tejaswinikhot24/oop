@@ -1,0 +1,29 @@
+#include<iostream>
+using namespace std;
+class Student{
+
+public : char name,int age,float percentage;
+public: getdata();
+}
+
+void Student::getdata()
+{
+  cout<<"Enter name of the Student :";
+ cin>>name;
+
+cout<<"Enter age of the student:";
+cin>>age;
+
+cout<<"Enter percentage :";
+cin>>percentage;
+
+}
+
+int main()
+{
+  Student s1;
+s1.getdata();
+
+
+}
+
